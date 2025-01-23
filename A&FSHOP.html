@@ -1,0 +1,563 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&amp;F Printing Services | Professional Printing Solutions</title>
+    <style>
+        :root {
+            --navy: #003366;
+            --mustard: #FFB733;
+            --light-navy: #004d99;
+            --light-mustard: #FFD480;
+            --white: #FFFFFF;
+            --gray: #F5F5F5;
+            --dark-gray: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+        }
+
+        .navbar {
+            background-color: var(--navy);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--mustard);
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--mustard);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,51,102,0.9), rgba(0,51,102,0.9)),
+                        url('/api/placeholder/1920/1080') center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--mustard);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--mustard);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-mustard);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--navy);
+        }
+
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--navy);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .testimonials {
+            background-color: var(--gray);
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            color: var(--navy);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--mustard);
+            outline: none;
+        }
+
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--mustard);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                text-align: center;
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                display: block;
+                margin: 1rem auto;
+                width: 80%;
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body class="ai-style-change-1" style="">
+    <nav class="navbar">
+        <a href="#" class="logo">A&amp;F Printing Services</a>
+        <div class="menu-toggle ai-style-change-1" style="background: initial !important;">☰</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero ai-style-change-1" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;https://i.ibb.co/P4gVw5q/449833181-982285247233087-782933578621966375-n-1.jpg&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+        <div class="hero-content">
+            <h1>Professional Printing Solutions for Your Business</h1>
+            <p>From custom t-shirts to business essentials, we bring your ideas to life with premium quality printing services.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">Explore Services</a>
+                <a href="#contact" class="btn btn-secondary">Get Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Comprehensive printing solutions for all your needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#custom-tshirts">
+                    <img src="https://i.ibb.co/VxsY1wn/shirt.png" alt="Custom T-Shirts">
+                </a>
+                <div class="service-content">
+                    <h3>Custom T-Shirts</h3>
+                    <p>High-quality custom printed t-shirts for any occasion, with various printing techniques available.</p>
+                </div>
+            </div>
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#tarpaulins">
+                    <img src="https://i.ibb.co/BcXyjvt/468449771-1093580242770253-8959338097775189602-n.jpg" alt="Tarpaulins">
+                </a>
+                <div class="service-content">
+                    <h3>Tarpaulins</h3>
+                    <p>Durable, weather-resistant tarpaulins perfect for outdoor advertising and events.</p>
+                </div>
+            </div>
+            
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#tote-bags">
+                    <img src="https://i.ibb.co/S0CLRWC/452646131-994485589346386-938074704708649863-n.jpg" alt="Custom Tote Bags">
+                </a>
+                <div class="service-content">
+                    <h3>Custom Table Cloth</h3>
+                    <p>Personalized table cloth for events, promotions, and everyday use.</p>
+                </div>
+            </div>
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#id-lace">
+                    <img src="https://i.ibb.co/gtQswfT/464235044-1065082848953326-2953306321956638023-n.jpg" alt="ID Lace">
+                </a>
+                <div class="service-content">
+                    <h3>ID Laces</h3>
+                    <p>Customized ID lanyards for conferences, schools, and corporate events.</p>
+                </div>
+            </div>
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#mugs">
+                    <img src="https://i.ibb.co/n0xrKyM/460553219-1036171588511119-4011431713620040861-n.jpg" alt="Custom Mugs">
+                </a>
+                <div class="service-content">
+                    <h3>Custom Mugs</h3>
+                    <p>Personalized mugs for gifts, promotions, and brand marketing.</p>
+                </div>
+            </div>
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#business-cards">
+                    <img src="https://i.ibb.co/2737y7v/452648609-994454686016143-6422162025394852147-n.jpg" alt="Business Cards">
+                </a>
+                <div class="service-content">
+                    <h3>Business Cards</h3>
+                    <p>Professional, high-quality business cards that make a lasting impression.</p>
+                </div>
+            </div>
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#menus">
+                    <img src="https://i.ibb.co/QPYVCD2/447760478-959651456163133-7373813217796750716-n.jpg" alt="Menus">
+                </a>
+                <div class="service-content">
+                    <h3>Menus</h3>
+                    <p>Attractive, durable menus for restaurants and cafes.</p>
+                </div>
+            </div>
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#pillows">
+                    <img src="https://i.ibb.co/9YQcDmW/447203374-960902049371407-3586842101549190495-n.jpg" alt="Custom Pillows">
+                </a>
+                <div class="service-content">
+                    <h3>Custom Pillows</h3>
+                    <p>Personalized decorative and throw pillows for home and corporate gifts.</p>
+                </div>
+            </div>
+            <div class="service-card" style="opacity: 1; transform: translateY(0px);">
+                <a href="#round-fan-umbrellas">
+                    <img src="https://i.ibb.co/C5fD80V/449091953-975212701273675-6419978045187578291-n.jpg" alt="Round Fan Umbrellas">
+                </a>
+                <div class="service-content">
+                    <h3>Personalized Ballpen</h3>
+                    <p>Custom printed ballpens for giveaways and promotional purposes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials">
+        <div class="section-title">
+            <h2>Client Testimonials</h2>
+            <p>What our customers say about us</p>
+        </div>
+        <div class="services-grid">
+            <div class="testimonial-card" style="opacity: 1; transform: translateY(0px);">
+                <img src="https://i.ibb.co/wJFBL7D/set-user-avatar-male-and-female-icon-person-icon-in-black-colors-vector.jpg" alt="Client">
+                <p>"Outstanding quality and service! A&amp;F Printing delivered our company t-shirts ahead of schedule."</p>
+                <h4>- John Del Mundo, Business Owner</h4>
+            </div>
+            <div class="testimonial-card" style="opacity: 1; transform: translateY(0px);">
+                <img src="https://i.ibb.co/wJFBL7D/set-user-avatar-male-and-female-icon-person-icon-in-black-colors-vector.jpg" alt="Client">
+                <p>"The team went above and beyond to ensure our banners were perfect for our event."</p>
+                <h4>- Eric Reyes, Event Planner</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch for your printing needs</p>
+        </div>
+        <div class="contact-section">
+            <div class="contact-info">
+                <h3>Let's Connect</h3>
+                <p>We're here to help with all your printing needs.</p>
+                <p>📧 
+afprinting2023@gmail.com</p>
+                <p>📞 0951 937 7143</p>
+                <p>📍 
+0014 LT Block 1 BLK, PH II, Dagat-Dagatan Ave, Maypajo, Caloocan, Philippines</p>
+                <p>⏰ Monday - Saturday: 9AM - 7PM</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" required="">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required="">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="5" required=""></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section><section id="about" style="padding: 50px 20px; background-color: #f9f9f9; font-family: Arial, sans-serif;">
+  <div class="about-container ai-style-change-1" style="margin: 0px auto; text-align: center;">
+    <!-- Title Section -->
+    <div class="about-title" style="margin-bottom: 30px;">
+      <h2 style="font-size: 2.5em; font-weight: bold; color: #333;">About Our Shop</h2>
+      <p style="font-size: 1.2em; color: #666; max-width: 800px; margin: 10px auto;">
+        Welcome to our shop! Discover a world of quality products and exceptional services tailored to meet your needs.
+      </p>
+    </div>
+
+    <!-- Photo Section -->
+    <div class="about-photo-section" style="margin: 40px 0;">
+      
+    <img src="https://i.ibb.co/2gpvf5v/100046115-1097446060638435-4541252866920153088-n.jpg" alt="100046115-1097446060638435-4541252866920153088-n"></div>
+
+    <!-- Description Section -->
+    <div class="about-description ai-style-change-1" style="margin-top: 30px;">
+      <p style="font-size: 1.1em; line-height: 1.8; color: #555;"> At our shop, we are committed to delivering excellence in every aspect of our business. From carefully selected products to personalized customer service, we prioritize your satisfaction above all. Our team is passionate about creating a welcoming environment where you feel valued. Whether you're here for a single item or a full shopping experience, we are here to assist and make your visit memorable. </p>
+      
+    </div>
+  </div>
+</section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" class="ai-style-change-1">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>© 2025 A&amp;F Printing Services. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message. We will get back to you soon!');
+            this.reset();
+        });
+
+        // Scroll animations
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.service-card, .testimonial-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+
+</body></html>
